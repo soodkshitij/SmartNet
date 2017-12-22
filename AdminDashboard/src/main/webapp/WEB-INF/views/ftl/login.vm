@@ -1,0 +1,54 @@
+<html>
+<head>
+<title>CloseBy Dashboard Login</title>
+<link href="resources/css/login.css" rel="stylesheet" type="text/css">
+<!-- Bootstrap CSS -->    
+<link href="resources/css/bootstrap.min.css" rel="stylesheet">
+<!-- bootstrap theme -->
+<link href="resources/css/bootstrap-theme.css" rel="stylesheet">
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css">
+<script src="resources/js/jquery-1.8.3.min.js"></script>
+<script src="resources/js/events.js"></script>
+<script src="resources/js/common.js"></script>
+</head>
+<body>
+<div class="top-content">
+	<div class="inner-bg">
+	    <div class="container">
+	        <div class="row">
+	            <div class="col-sm-8 col-sm-offset-2 text">
+	            	<img src="https://d19rpgkrjeba2z.cloudfront.net/907ec1a81efee6ef/static/nextdoorv2/images/icons/nextdoor-icons-house-60-73.png">
+	                <h1><strong>CloseBy Admin Login</strong></h1>
+	            </div>
+	        </div>
+	        <div class="row">
+	            <div class="col-sm-6 col-sm-offset-3 form-box">
+	            	<div class="form-top">
+	            		<div class="form-top-left">
+	            			<h3>Login to our admin dashboard</h3>
+	                		<p>Enter your username and password to log on:</p>
+	            		</div>
+	            		<div class="form-top-right">
+	            			<i class="fa fa-key"></i>
+	            		</div>
+	                </div>
+	                <div class="form-bottom">
+	                    <form role="form" action="" method="post" class="login-form">
+	                    	<div class="form-group">
+	                    		<label class="sr-only" for="form-username">Username</label>
+	                        	<input type="text" name="form-username" placeholder="Username..." class="form-username form-control" id="form-username">
+	                        </div>
+	                        <div class="form-group">
+	                        	<label class="sr-only" for="form-password">Password</label>
+	                        	<input type="password" name="form-password" placeholder="Password..." class="form-password form-control" id="form-password">
+	                        </div>
+	                        <button type="submit" class="btn">Sign in!</button>
+	                    </form>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+</div>
+</body>
+</html>
