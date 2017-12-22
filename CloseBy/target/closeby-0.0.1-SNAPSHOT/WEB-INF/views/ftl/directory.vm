@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>CloseBy</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link href="resources/css/bootstrap.min.css" rel="stylesheet">
+    <link href="resources/css/view.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script type="text/javascript">
+		context="$appContextPath";
+	</script>
+  </head>
+<body>
+<!--Temp img to be replaced by s3 image -->
+#set($dummyImage="https://d3926qxcw0e1bh.cloudfront.net/user_photos/50/0d/500de8f3affd58d7ce6f09a58f6a7d41.72x72.jpg")
+
+<div class="container-fluid">
+      <div class="navbar">
+        <nav class="navbar-default navbar-fixed-top">
+          <div class="navbar-items">
+
+            <div class="header-icon" style="padding-top: 18px;">
+              <a class="header-brand" href="/closeby/feed">
+                  <img class="logo" src="resources/images/home_logo.png" alt="Home">
+              </a>
+			</div><!--Home Icon-->
+			
+			<div class="header-icon" style="padding-top: 12px;padding-left: 0px;letter-spacing: 2px;">
+				<p style="font-size: 24px;color: #FFF;font-weight: 800;">CloseBy</p>
+			</div>
+			
+
+            <div class="nav navbar-right hidden-xs" style="
+    padding-top: 16px;
+    padding-bottom: 0px;
+">
+              <ul class="nav navbar-nav">
+                <li>
+                  <div class="nav-item">
+                    <a class="header-brand" href="#">
+                      <div>
+                        <img class="logo" src="resources/images/notification_logo.png" alt="Notification">
+                      </div>
+                    </a>
+                  </div>
+                </li><!--Notification Icon-->
+                <li>
+                  <div class="nav-item">
+                    <a class="header-brand" href="/closeby/inbox">
+                      <div>
+                        <img class="logo" src="resources/images/inbox_logo.png" alt="Inbox">
+                      </div>
+                    </a>
+                  </div>
+                </li><!--Inbox Icon-->
+                
+                <li>
+                	<div class="nav-item" style="width:24px;">
+                        <div>
+                        	<img class="logo" src="$user.get("image")" alt="profileImage">
+                      	</div>
+                  	  </div>
+                </li>
+                
+                <li class="avatar-list">
+					
+                      <div class="avatar-container">
+                        <a class="avatar-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <div class="avatar" style="margin-top: 5px;">
+                            <img class="drop" src="resources/images/dropdown_logo.png">
+                          </div>
+                        </a>
+
+                        <ul class="dropdown-menu">
+                          <div class="profile-tray">
+                            <div class="nav-bar-profile-item">
+                              <a href="#">
+                                <div class="avatar nav-bar-profile-avatar">
+                                  <img class="avatar-img" src="$user.get("image")" alt="User image" height="72" width="72" style="height: 38px; width: 38px;">
+                                </div>
+                              </a>
+                              <div class="nav-bar-profile-content">
+                                <a class="profile-link" href="#">
+                                  <span class="nav-bar-profile-name">$user.get("first_name")&nbsp;$user.get("last_name")</span>
+                                </a>
+                                <!--
+                                <a class="profile-link profile-your-profile-link" href="#">
+                                  Your profile
+                                </a>
+                                -->
+                              </div>
+                            </div>
+
+                            <div class="nav-bar-profile-item" style="padding:0px;">
+                              <li><hr class="menu-divider"></li>
+                            </div>
+
+                            <div class="nav-bar-profile-item">
+                              <li class="nav-sublinks"><a href="#">
+                                <img src="resources/images/bookmark_logo.png" class="nav-menu-dropdown-icon" alt="Profile">
+                              Profile</a></li>
+                            </div>
+
+
+                            <div class="nav-bar-profile-item">
+                              <li class="nav-sublinks">
+                              <a href="#">
+                                <img src="resources/images/sign-out-logo.png" class="nav-menu-dropdown-icon" alt="Sign Out">
+                              Sign Out</a></li>
+                            </div>
+                        </div>
+                        </ul>
+
+                      </div>
+
+                </li>
+              </ul>
+            </div>
+
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </div><!--Navigation Bar-->
+
+      <div class="container with-navbar scroll-locked">
+        <div class="row">
+          <div class="navbar-container">
+            <div class="nav-bar">
+              <ul class="nav-bar-list">
+                <li>
+                  <a class="nav-menu-item-link" href="/closeby/feed">
+                  <img class="nav-menu-item-icon" src="resources/images/home_nav.png" alt="Home">Home</a>
+                </li>
+              </ul>
+              <hr class="nav-bar-hr">
+              <div class="nav-bar-section-title">Categories</div>
+              <ul class="nav-bar-list">
+              	<li>
+                  <a class="nav-menu-item-link" href="#">
+                  <img class="nav-menu-item-icon" src="resources/images/alert_modal.png">Alerts</a>
+                </li>
+                <li>
+                  <a class="nav-menu-item-link" href="#">
+                  <img class="nav-menu-item-icon" src="resources/images/recommended-logo.png">Recommended</a>
+                </li>
+                <li>
+                  <a class="nav-menu-item-link" href="#">
+                  <img class="nav-menu-item-icon" src="resources/images/for-sale-logo.png">Sale</a>
+                </li>
+                <li>
+                  <a class="nav-menu-item-link" href="#">
+                  <img class="nav-menu-item-icon" src="resources/images/crime-safety-logo.png">Crime & Safety</a>
+                </li>
+                <li>
+                  <a class="nav-menu-item-link" href="#">
+                  <img class="nav-menu-item-icon" src="resources/images/general-logo.png">General</a>
+                </li>
+                <li>
+                  <a class="nav-menu-item-link" href="#">
+                  <img class="nav-menu-item-icon" src="resources/images/lost-found-logo.png">Lost & found</a>
+                </li>
+              </ul>
+              <hr class="nav-bar-hr">
+              <div class="nav-bar-section-title">Directories</div>
+              <ul class="nav-bar-list">
+                <li>
+                  <a class="nav-menu-item-link" href="/closeby/directory">
+                  <img class="nav-menu-item-icon" src="resources/images/neighbor_nav.png" alt="Neighbors">Neighbors</a>
+                </li>
+                <li>
+                  <a class="nav-menu-item-link" href="#">
+                  <img class="nav-menu-item-icon" src="resources/images/public-agency-logo.png" alt="Public Agency">Public Agency</a>
+                </li>
+              </ul>
+              <div class="nav-bar-section-title">My Posts</div>
+	              <ul class="nav-bar-list">
+	                <li>
+	                  <a class="nav-menu-item-link" data-cat="" href="$appContextPath/my-posts">
+	                  <img class="nav-menu-item-icon" src="resources/images/message_modal.png">Within Community</a>
+	                </li>
+	                <li>
+	                  <a class="nav-menu-item-link my_inter_posts" href="$appContextPath/my-inter-posts">
+	                  <img class="nav-menu-item-icon" src="resources/images/message_modal.png">Outside Community</a>
+	                </li>
+	              </ul>
+            </div>
+          </div><!--Left Pane-->
+
+            <div class="col-md-12 feed-container with-navbar">
+            	<div class="column-header">
+            		<span style="font-size: 22px; line-height: 26px; font-weight: 500;">Neighbors</span>
+            	</div>
+            	
+            	<div class="neighbors-container">
+            	#foreach($user in $users)
+					<div class="neighbor" style="box-sizing: border-box; background: white; margin: 0 16px; height: 80px;border-bottom:1px #EFF1F3 solid;">
+						<div class="neighbor-avatar" style="float: left; margin-top: 18px;"><img src="$user.get("image")" style="height: 40px;"></div>
+						<div class="neighbor-info" style="margin-left: 48px;padding-top: 28px;">
+							<input class="user_id" type="hidden" val="$user.get("id")">
+							<a class="neighbor-name">$user.get("first_name")&nbsp;$user.get("last_name")</a> <button class="neighbor-button-right button-secondary button-small" style="float: right; border: #DFE1E4 1px solid; background-color: #EFF1F3; border-radius: 3px; width: 100px;"
+							type="button" data-toggle="modal" data-target="#messageModal" data-user-id="$user.get("id")" data-user-name="$user.get("first_name")&nbsp;$user.get("last_name")">Message</button>
+						</div>
+					</div>
+				#end
+					
+				</div>
+            	
+            	
+            	
+            </div>
+        </div>
+      </div>
+</div><!--COntainer Fluid-->
+
+  <!-- Modal -->
+  <div class="modal fade" id="messageModal" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content" role="document">
+        <div class="modal-header post-modal-header">
+          <input class="user_id" type="hidden">
+          <h4 style="padding:10px;font-weight:400;">Send message to Kshitij Sood</h4>
+          <button class="modal-close-button">
+            <img src="resources/images/close_modal.png" alt="Close Button" data-dismiss="modal" class="modal-close-icon">
+          </button>
+        </div>
+        <div class="modal-body post-modal-body" style="padding:0px;">
+        
+        <form id="user-message-post-form">
+	        <div id="message-container">
+	          <div class="post-section" style="min-height:200px;">
+			  	
+			   
+			   <div class="post-field">
+				   	<div class="category-container">
+				   		<textarea placeholder="Message" val="" id="message" name="message" style="border:0;width:100%;outline:none;height:150px;resize:none;" required></textarea>
+				   	</div>
+			   </div>
+			   
+			   <div class="message-footer" style="height: 50px;background-color:#FBFBFD;">
+					
+					<div class="right-container" style="width: 100px; float: right; margin-right: 50px; padding: 15px;">
+						<button class="user-message-post-form button-primary" style="width: 100px;height:32px; background: #00B246; border-radius: 3px; color: white; font-size: 14px; border: 1px solid #00B246; letter-spacing: 1px;" type="button">Post</button>
+					</div>
+			   </div>
+	             	
+	             	
+	            </div>
+	        </div>
+	    </form>
+        
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="resources/js/bootstrap.min.js"></script>
+        <script src="resources/js/common.js"></script>
+        <script src="resources/js/events.js"></script>
+        <script language="javascript" type="text/javascript" src="resources/js/jscroll.js"></script>
+    	<script type="text/javascript" charset="utf-8">
+			$(document).ready(function(){
+				$(".posts").jscroll({ nextSelector: ".nextPageLoad"});
+			});
+		</script>
+  </body>
+</html>

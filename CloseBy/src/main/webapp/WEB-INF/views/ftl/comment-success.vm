@@ -1,0 +1,6 @@
+<div class="comment-container already-comment-container" style="padding-left:40px;border:0;padding-top:0px;padding-bottom:5px;">
+	<div class="author" style="color: #6F7681;">
+		<span>$user.get("first_name")&nbsp;$user.get("last_name")</span>
+	</div>
+	<div class="message content-body" data-comment-id="$cmt_id" style=" white-space: pre-wrap;margin-bottom:5px;">$cmt</div>
+</div>

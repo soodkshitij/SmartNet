@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<title>CloseBy</title>
+		<meta name="generator" content="Bootply" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<link href="resources/css/bootstrap.min.css" rel="stylesheet">
+        <link href="resources/css/my-styles.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet"> 
+		<!--[if lt IE 9]>
+			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<link href="resources/css/styles.css" rel="stylesheet">
+		<script type="text/javascript">
+			context="$appContextPath";
+		</script>
+		<style>
+			.alert {
+			    -webkit-font-smoothing: antialiased;
+			    -webkit-border-radius: 0;
+			    -moz-border-radius: 0;
+			    border-radius: 0;
+			    border-left: none;
+			    border-right: none;
+			    padding: 15px;
+			    position: relative;
+			    margin:0px;
+			}
+			.error-row{
+				width:400px;
+				margin:0 auto;
+			}
+		</style>
+	</head>
+	<body>
+        
+        <div class="container-fluid bg">
+            <div class="row">
+                <div class="col col-xs-12">
+                    <div class="col col-xs-12">
+                        <h1 class="title" style="text-align:center;">CloseBy</h1>
+                    </div>
+                    <div class="col col-xs-12 subtitle-container">
+                        <h2 class="subtitle">Welcome Member! Please enter your credentials.</h2>
+                    </div>
+                    #if($msg)
+            		<div class="row error-row" style="margin-bottom: 5px;background-color: #f2dede;border-color: #eed3d7;color: #e23a24;">
+            				<div id="form_errors" class="alert alert-error" style="display: block;">$msg</div>
+            			</div>
+            		#end
+                    <div class="nb-finder-box col col-xs-4 text-center">
+                    	<form action="$appContextPath/sign-in" method="POST">
+                        	<input type="email" name="email" val="" class="form-control" id="email" placeholder="Email Address" required>
+                        	<input type="password" name="password" val="" class="form-control" id="password" placeholder="Password" required>
+                        	<button type="submit" id="login" class="text-center col-md-6 btn btn-success btn-send">Submit</button>
+                        </form>
+                        <a href="$appContextPath/sign-in"><button type="submit" id="sign-in-page-forget_password" class="text-center col-md-6 btn btn-success btn-send">Forgot password?</button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+	<!-- script references -->
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+		<script src="resources/js/bootstrap.min.js"></script>
+		<script src="resources/js/scripts.js"></script>
+	</body>
+</html>

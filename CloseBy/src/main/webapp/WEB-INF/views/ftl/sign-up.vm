@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<title>CloseBy</title>
+		<meta name="generator" content="Bootply" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<link href="resources/css/bootstrap.min.css" rel="stylesheet">
+        <link href="resources/css/my-styles.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet"> 
+		<!--[if lt IE 9]>
+			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<link href="resources/css/styles.css" rel="stylesheet">
+		<script type="text/javascript">
+			context="$appContextPath";
+		</script>
+		<style>
+		.row{
+			margin-bottom:20px;
+		}
+		.alert {
+		    -webkit-font-smoothing: antialiased;
+		    -webkit-border-radius: 0;
+		    -moz-border-radius: 0;
+		    border-radius: 0;
+		    border-left: none;
+		    border-right: none;
+		    padding: 15px;
+		    position: relative;
+		    margin:0px;
+		}
+		</style>
+	</head>
+	<body>
+        
+        <div class="container-fluid">
+            <div class="row custom-header" style="width: 980px;margin: 0 auto;border-bottom: 1px solid #d8d8d8;">
+            	<div class="col-lg-1" style="">
+            		<img class="signup-logo-image" src="resources/images/logo.png">
+            	</div>
+            	<div class="col-lg-4" style="margin-top: 6px;padding-left: 20px;">
+            		<h3 style="font-size: 36px;color: #00b246;letter-spacing: 2px;">CloseBy</h3>
+            	</div>
+            </div>
+            <div class="row top-buffer" style="margin-top:50px;"></div>
+            <div class="row">
+            	<div class="col-lg-4 col-lg-offset-2">
+            		<div class="row">
+            			<h3 style="font-weight:300;">Great!&nbsp;$com_res.get("communityName")  $com_res.get("communityAddress") is your neighborhood</h3>
+            		</div>
+            		#if($msg)
+            		<div class="row" style="margin-bottom: 5px;background-color: #f2dede;border-color: #eed3d7;color: #e23a24;">
+            				<div id="form_errors" class="alert alert-error" style="display: block;">$msg</div>
+            			</div>
+            		#end
+            		<form action="$appContextPath/signup-user" method="POST">
+            		<input id="community_place_id" value="$community_place_id" name="community_place_id" type="hidden"></input>
+            		<input id="address" value="$address" name="address" type="hidden"></input>
+            		<div class="row">
+	            		<div class="col-sm-6" style="padding:0px;">
+	        				<input style="border-radius:0px;" type="text" class="form-control form-control-lg" name="firstName" placeholder="First name" required>
+	      				</div>
+	      				<div class="col-sm-6" style="padding-right:0px;">
+	        				<input style="border-radius:0px;" type="text" class="form-control form-control-lg" name="lastName" placeholder="Last Name" required>
+	      				</div>
+	      			</div>
+	      			<div class="row">
+	      				<input style="border-radius:0px;" type="email" class="form-control form-control-lg" name="email" placeholder="Email" required>
+	      			</div>
+	      			<div class="row">
+	      				<div class="col-sm-6" style="padding:0px;">
+	      					<input style="border-radius:0px;" type="password" class="form-control form-control-lg" name="password" placeholder="Password" required>
+	      				</div>
+	      				<div class="col-sm-6" style="padding-right:0px;">
+	      					<input style="border-radius:0px;" type="number" class="form-control form-control-lg" name="phoneNumber" placeholder="Phone Number" required>
+	      				</div>
+	      			</div>
+	      			
+	      			<div class="row">
+	      				<label class="radio-inline">
+					      <input type="radio" name="gender" value="male">Male
+					    </label>
+					    <label class="radio-inline">
+					      <input type="radio" name="gender" value="female">Female
+					    </label>
+					    <label class="radio-inline">
+					      <input type="radio" name="gender" value="other">Other
+					    </label>
+	      			</div>
+	      			<input type="hidden" id="com_id" name="com_id" value="$com_res.get("communityId")"></input>
+	      			<div class="row">
+	      				<button type="submit" class="btn btn-primary col-lg-12" style="background-color: #00b246;border-color: #00b246;border-radius: 3px;text-shadow: 0 1px 1px rgba(255,255,255,.2);height: 40px;">Submit!</button>
+	      			</div>
+	      			</form>
+            	</div>
+            	<div class="col-lg-4 col-lg-offset-1">
+            	<div class="row top-buffer" style="margin-top:54px;"></div>
+            	<div class="row">
+            		<div id="map" style="height:250px;width:350px;">
+            		</div>
+            	</div>
+            	</div>
+            </div>
+            <div class="row" style="border-top:1px solid #d8d8d8;width:980px;margin:0 auto;text-align:center;">
+            	<p>All rights reserved.&copy;2017, CloseBy</p>
+            </div>
+            
+            
+		
+		
+		
+		
+		
+		
+		<script>
+      // Initialize the map.
+      function initMap() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 8,
+          center: {lat: 40.72, lng: -73.96}
+        });
+       	var geocoder = new google.maps.Geocoder;
+        var infowindow = new google.maps.InfoWindow;
+	    geocodePlaceId(geocoder, map, infowindow);
+      }
+
+      // This function is called when the user clicks the UI button requesting
+      // a geocode of a place ID.
+      function geocodePlaceId(geocoder, map, infowindow) {
+        var placeId = document.getElementById('community_place_id').value;
+        geocoder.geocode({'placeId': placeId}, function(results, status) {
+          if (status === 'OK') {
+            if (results[0]) {
+              map.setZoom(16);
+              map.setCenter(results[0].geometry.location);
+              var marker = new google.maps.Marker({
+                map: map,
+                position: results[0].geometry.location
+              });
+              
+              infowindow.setContent(results[0].formatted_address);
+              infowindow.open(map, marker);
+            } else {
+              window.alert('No results found');
+            }
+          } else {
+            window.alert('Geocoder failed due to: ' + status);
+          }
+        });
+      }
+    </script>
+
+
+	<!-- script references -->
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+		<script src="resources/js/bootstrap.min.js"></script>
+		<script src="resources/js/scripts.js"></script>
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCxHeR2P_z52ckffBb4JPNzBvLhaptpycs&libraries=places&callback=initMap" async defer></script>
+	</body>
+</html>

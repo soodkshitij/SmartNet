@@ -1,0 +1,9 @@
+com/closeby/web/controller/DirectoryController.class
+com/closeby/web/utils/CookiesProcessor.class
+com/closeby/web/controller/HomeController.class
+com/closeby/services/RestClient.class
+com/closeby/web/config/SpringWebAppInitializer.class
+com/closeby/web/config/AppConfig.class
+com/closeby/web/controller/FeedsController.class
+com/closeby/web/config/WebConfig.class
+com/closeby/web/controller/InboxController.class

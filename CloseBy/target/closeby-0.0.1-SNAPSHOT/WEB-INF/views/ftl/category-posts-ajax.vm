@@ -1,0 +1,30 @@
+#foreach( $post in $posts )
+        <div class="posts-container" data-post-id=$post.get("post_id") style="display: block; box-sizing: border-box; background: white;">
+			<div class="posts-body" style="padding: 16px 16px 4px;">
+				<div class="author" style="color: #6F7681;">
+					<div class="avatar-custom" style="width:24px;height:24px;float:left;margin-right:10px;"><img style="width:24px;" src="$post.get("image")"></div>
+					<span>$post.get("first_name")&nbsp;$post.get("last_name")</span> <span>,</span> <span style="">$post.get("community_name")</span>
+				</div>
+				<div class="content-title">
+					<h4>$post.get("title")</h4>
+				</div>
+				#if($post.get("file_id")!="null")
+					<div class="content-image">
+					<img style='height: 100%; width: 100%; object-fit: contain' src="$post.get("file_id")"></img>
+					</div>
+				#end
+				<div class="message content-body" style=" white-space: pre-wrap;margin-top:10px;">$post.get("message")</div>
+				<div class="button-container" expanded="false" data-post-id=$post.get("post_id") style="padding: 10px 0 12px;cursor:pointer;">
+					<img src="resources/images/reply.png" style="height: 21px;"> <span style="color: #0075A1; vertical-align: middle;margin-left:5px;">Reply</span>
+				</div>
+			</div>
+			<div class="comments-$post.get("post_id")">
+			</div>
+			<div class="comment-container comment-container-$post.get("post_id")" style="display:none;">
+				<textarea type="text" data-post-id=$post.get("post_id") class="comment-add-reply-text-input" placeholder="Add a reply..." style="height: 41px;"></textarea>
+			</div>
+	   </div>
+#end
+#if($posts.length()>0)
+	<a href="$appContextPath/category-feed-ajax/?offset=$newOffset&category=$category" style="display:none;" class="nextPageLoad">View More</a>
+#end

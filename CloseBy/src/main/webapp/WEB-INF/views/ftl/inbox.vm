@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>CloseBy</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link href="resources/css/bootstrap.min.css" rel="stylesheet">
+    <link href="resources/css/view.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script type="text/javascript">
+		context="$appContextPath";
+	</script>
+  </head>
+<body>
+<!--Temp img to be replaced by s3 image -->
+
+<div class="container-fluid">
+		<div class="navbar">
+			<nav class="navbar-default navbar-fixed-top">
+				<div class="navbar-items">
+					<div class="header-icon" style="padding-top: 18px;">
+						<a class="header-brand" href="/closeby/feed"><img alt="Home" class="logo" src="resources/images/home_logo.png"></a>
+					</div><!--Home Icon-->
+					<div class="header-icon" style="padding-top: 12px;padding-left: 0px;letter-spacing: 2px;">
+						<p style="font-size: 24px;color: #FFF;font-weight: 800;">CloseBy</p>
+					</div>
+					<div class="nav navbar-right hidden-xs" style="padding-top: 16px; padding-bottom: 0px;">
+						<ul class="nav navbar-nav">
+							<li>
+								<div class="nav-item">
+									<a class="header-brand" href="#">
+									<div><img alt="Notification" class="logo" src="resources/images/notification_logo.png"></div></a>
+								</div>
+							</li><!--Notification Icon-->
+							<li>
+								<div class="nav-item">
+									<a class="header-brand" href="/closeby/inbox">
+									<div><img alt="Inbox" class="logo" src="resources/images/inbox_logo.png"></div></a>
+								</div>
+							</li><!--Inbox Icon-->
+							<li>
+								<div class="nav-item" style="width:24px;">
+									<div><img alt="profileImage" class="logo" src="https://d19rpgkrjeba2z.cloudfront.net/e82de29ec673c6fa/static/nextdoorv2/images/avatars/avatar-k.png"></div>
+								</div>
+							</li>
+							<li class="avatar-list">
+								<div class="avatar-container">
+									<a aria-expanded="false" aria-haspopup="true" class="avatar-link dropdown-toggle" data-toggle="dropdown" href="#">
+									<div class="avatar" style="margin-top: 5px;"><img class="drop" src="resources/images/dropdown_logo.png"></div></a>
+									<div class="dropdown-menu" style="margin-left: 2em">
+										<div class="profile-tray">
+											<div class="nav-bar-profile-item">
+												<a href="#">
+												<div class="avatar nav-bar-profile-avatar"><img alt="User image" class="avatar-img" height="72" src="https://d19rpgkrjeba2z.cloudfront.net/e82de29ec673c6fa/static/nextdoorv2/images/avatars/avatar-k.png" style="height: 38px; width: 38px;" width="72"></div></a>
+												<div class="nav-bar-profile-content">
+													<a class="profile-link" href="#"><span class="nav-bar-profile-name">Kshitij&nbsp;Sood</span></a> <!--
+                                <a class="profile-link profile-your-profile-link" href="#">
+                                  Your profile
+                                </a>
+                                -->
+												</div>
+											</div>
+											<div class="nav-bar-profile-item" style="padding:0px;">
+												<ul>
+													<li>
+														<hr class="menu-divider">
+													</li>
+												</ul>
+											</div>
+											<div class="nav-bar-profile-item">
+												<ul>
+													<li class="nav-sublinks">
+														<a href="#"><img alt="Profile" class="nav-menu-dropdown-icon" src="resources/images/bookmark_logo.png"> Profile</a>
+													</li>
+												</ul>
+											</div>
+											<div class="nav-bar-profile-item">
+												<ul>
+													<li class="nav-sublinks">
+														<a href="#"><img alt="Sign Out" class="nav-menu-dropdown-icon" src="resources/images/sign-out-logo.png"> Sign Out</a>
+													</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+		</div>
+		
+		
+		<div class="row">
+			<div class="clearfix">
+			
+			<div class="side-message-bar col-md-2" style="padding-left: 0px; width: 300px; margin-left: 300px; background: white; border-left: 1px solid rgba(0, 0, 0, 0.1); border-right: 1px solid rgba(0, 0, 0, 0.1); border-color: #fff; height: 80vh; display: block;">
+				<div class="top_bar_messages" style="border-bottom: 1px solid #EFF1F3; height: 40px; padding: 10px; border-bottom: 3px solid #00B246;">
+					<span style="padding: 20px; color: #00932A !important; padding-bottom: 10px;">Inbox</span>
+				</div>
+				#foreach($userT in $users)
+					<div class="user-message" data-user-id="$userT.get("id")" data-me-user="$user.get("id")"  data-user-name="$userT.get("first_name")&nbsp;$userT.get("last_name")" data-me-name="$user.get("first_name")&nbsp;$user.get("last_name")" style="display: block; border-bottom: 1px solid #EFF1F3; height: 82px;">
+						<div class="neighbor" style="box-sizing: border-box;background: white;margin: 0 16px;height: 80px;cursor:pointer;">
+							<div class="neighbor-avatar" style="float: left; margin-top: 18px;">
+								<img src="$userT.get("image")" style="height: 40px;">
+							</div>
+							<div class="neighbor-info" style="margin-left: 48px;padding-top: 28px;">
+								<input class="user_id" type="hidden" value="$userT.get("id")"> <a class="neighbor-name">$userT.get("first_name")&nbsp;$userT.get("last_name")</a>
+							</div>
+						</div>
+					</div>
+				#end
+			</div>
+						
+			
+			<div class="messages-from-user col-md-6" style="height: 80vh;background: white;float: left;width: 37%;border-left: 1px solid rgba(0, 0, 0, 0.1);border-right: 1px solid rgba(0, 0, 0, 0.1);overflow-x: hidden;overflow-y: scroll;padding-top: 30px;">
+				<div id="id-messages-from-user" style="height: 65vh;border-bottom: 1px solid rgba(0, 0, 0, 0.1);overflow-y:scroll;">
+					<div style="text-align: center; color: grey; font-size: 14px; margin-top: 30px;">
+						No message selected
+					</div>
+				</div>
+				<div data-me-user="$user.get("id")" data-user-id="" class="send-box" style="/* border: 1px solid rgba(0, 0, 0, 0.1); */">
+					<textarea class="input-block-level form-control chat-reply-textarea" name="reply" placeholder="Enter a message" style="height: 55px;/* border: 1px solid rgba(0, 0, 0, 0.1); */margin-top: 10px;"></textarea>
+				</div>
+			</div>
+			
+			
+			</div>
+		</div>
+		
+	</div>
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="resources/js/bootstrap.min.js"></script>
+        <script src="resources/js/common.js"></script>
+        <script src="resources/js/events.js"></script>
+        <script language="javascript" type="text/javascript" src="resources/js/jscroll.js"></script>
+    	<script type="text/javascript" charset="utf-8">
+			$(document).ready(function(){
+				$(".posts").jscroll({ nextSelector: ".nextPageLoad"});
+			});
+		</script>
+  </body>
+</html>

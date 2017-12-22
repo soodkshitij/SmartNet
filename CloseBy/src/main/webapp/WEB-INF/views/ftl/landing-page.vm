@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<title>CloseBy</title>
+		<meta name="generator" content="Bootply" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<link href="resources/css/bootstrap.min.css" rel="stylesheet">
+        <link href="resources/css/my-styles.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet"> 
+		<!--[if lt IE 9]>
+			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<link href="resources/css/styles.css" rel="stylesheet">
+		<script type="text/javascript">
+			context="$appContextPath";
+		</script>
+	</head>
+	<body>
+        
+        <div class="container-fluid bg">
+            <div class="row">
+                <div class="col col-xs-12">
+                    <div class="col col-xs-12">
+                        <h1 class="title" style="text-align:center;">CloseBy</h1>
+                    </div>
+                    <div class="col col-xs-12 subtitle-container">
+                        <h2 class="subtitle">Welcome! Please confirm your address in your neighborhood.</h2>
+                    </div>
+                    <div class="nb-finder-box col col-xs-4 text-center">
+                    	<form action="$appContextPath/sign-up" method="POST">
+                        	<input type="text" name="address" val="" class="form-control" id="Address" placeholder="Your Street Address">
+                        	<input id="community_place_id" value="" name="community_place_id" type="hidden"></input>
+                        	<input id="lat_custom" name="lat" type="hidden" value=""></input>
+            				<input id="lon_custom" name="lon" type="hidden" value=""></input>
+                        	<button type="submit" id="landing_page_signup" class="text-center col-md-6 btn btn-success btn-send">Submit</button>
+                        </form>
+                        <a href="$appContextPath/sign-in"><button type="submit" id="landing_page_signin" class="text-center col-md-6 btn btn-success btn-send">Already a member?</button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+<script>
+function initMap() {
+    var input = document.getElementById('Address');
+
+    var autocomplete = new google.maps.places.Autocomplete(input);
+    autocomplete.setComponentRestrictions(
+            {'country': ['us']});
+
+    var infowindow = new google.maps.InfoWindow();
+    autocomplete.addListener('place_changed', function() {
+        infowindow.close();
+        var place = autocomplete.getPlace();
+	    console.log("place is "+place);
+	    console.log("place_id "+place.place_id);
+	    console.log(place.geometry.location.lat());
+	    console.log(place.geometry.location.lng());
+	    document.getElementById('lat_custom').value = place.geometry.location.lat();
+	    document.getElementById('lon_custom').value = place.geometry.location.lng();
+    });
+    
+}
+</script>
+
+
+	<!-- script references -->
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+		<script src="resources/js/bootstrap.min.js"></script>
+		<script src="resources/js/scripts.js"></script>
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCxHeR2P_z52ckffBb4JPNzBvLhaptpycs&libraries=places&callback=initMap" async defer></script>
+	</body>
+</html>
